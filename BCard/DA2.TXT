@@ -1,0 +1,84 @@
+import React from "react";
+import {Container} from 'flux/utils';
+var ReactDOM = require('react-dom');
+
+import CanvasBoxCSS from "./CanvasBox.css";
+
+import ZoomToolbox from "./ZoomToolbox/ZoomToolbox.js";
+import Toolbar from "./Toolbar/Toolbar.js";
+
+import Canvas from "./fabric-components/Canvas.js";
+import Image from "./fabric-components/Image.js";
+import Text from "./fabric-components/Text.js";
+
+import FabricStore from "../../stores/FabricStore.js";
+
+var c = new Canvas({
+  width:600,
+  height:400,
+  id:'canvas',
+});
+
+export default class CanvasBox extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      activeObject:null,
+      value:'media/front.png',
+      front:'media/front.png',
+      back:'media/back.png',
+      isCounterHidden: true
+    };
+  }
+  toggleCounter() {
+    this.setState({
+      isCounterHidden: ! this.state.isCounterHidden
+    });
+  }
+  componentDidMount () {
+    this._tfront()
+  }
+  _tfront (){
+     
+    var el = ReactDOM.findDOMNode(this);
+    c.init();
+    c.addTshirtOverlay(this.state.value);
+    c.centerCanvas();
+  }
+  incrementCounter() {
+     
+     var oldcanv = ReactDOM.findDOMNode(this);
+    c.addTshirtOverlay(this.state.back);
+    c.centerCanvas();
+  }
+  componentWillMount(){
+    FabricStore.on("change",() => {
+      this.setState({
+        activeObject:FabricStore.getActiveObject()
+      });
+    });
+  }
+  componentWillUpdate(){
+    this.incrementCounter()
+  }
+  render() {
+    let style = {
+      marginTop: '40px',
+      marginBottom: '0px'
+    };
+    return (
+      <div class="canvas-box">
+        <Toolbar activeObject={this.state.activeObject}/>
+        <div class="section no-pad-bot no-pad-top">
+        <div className="btn-group btn-group-lg" role="group" aria-label="..." style={style}>
+        <button type="button" className="btn btn-default" onClick={this.toggleCounter}>{this.state.isCounterHidden ? 'Front' : 'Back'}</button>
+        <button type="button" className="btn btn-success" onClick={this.incrementCounter}>T-Shirt Side</button>
+      </div>
+       {this.state.isCounterHidden ? null : <canvas id = "canvas" ></canvas>}
+          <canvas id = "canvas" ></canvas>
+        </div>
+        <ZoomToolbox />
+      </div>
+    );
+  }
+}

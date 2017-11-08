@@ -1,0 +1,216 @@
+require('fabric');
+import FabricStore from "../../../stores/FabricStore.js";
+import Canvas from "../fabric-components/Canvas.js";
+class Fabric_Text {
+	constructor(object) {
+		// this.canvas 		= new Canvas();
+		// this.canvas.init();
+		// this.fs 		    = FabricStore.getCanvas();
+		this.canvas 		= FabricStore.getCanvas();
+		this.top 			= (object && typeof object.top != "undefined") ? object.top : this.canvas.height/2;
+		this.left 			= (object && typeof object.left != "undefined") ? object.left : this.canvas.width/2;
+		this.angle 			= (object && typeof object.angle != "undefined") ? object.angle : 0;
+		this.text 			= (object && typeof object.text != "undefined") ? object.text : 'Insert Your Text Here';
+		this.fill 			= (object && typeof object.fill != "undefined") ? object.fill : '#333333';
+		this.fontSize 		= (object && typeof object.fontSize != "undefined") ? object.fontSize : 20;
+		this.fontWeight 	= (object && typeof object.fontWeight != "undefined") ? object.fontWeight : 500;
+		this.fontFamily 	= (object && typeof object.fontFamily != "undefined") ? object.fontFamily : 'Roboto Condensed';
+		this.opacity 		= (object && typeof object.opacity != "undefined") ? object.opacity : 1;
+		this.id 			= (object && typeof object.id != "undefined") ? object.id : new Date().getTime();
+		this.index 			= (object && typeof object.index != "undefined") ? object.index : this.canvas.getObjects().length;
+		this.originX 		= (object && typeof object.originX != "undefined") ? object.originX : 'center';
+		this.originY 		= (object && typeof object.originY != "undefined") ? object.originY : 'center';
+		this.class 			= (object && typeof object.class != "undefined") ? object.class : 'text';
+		this.originalObject = null;
+		this.width 			= (object && typeof object.width != "undefined") ? object.width : this.getWidth(this);
+	}
+	createName(){
+		this.canvas.deactivateAll().renderAll();
+		var that = this;
+		var text = new fabric.Textbox(that.text, {
+			id 			: that.id,
+			top 		: 25, // coord x
+			left 		: 70, // coord y
+			fill 		: '#C62828',
+			index		: that.index,
+			class		: that.class,
+			width		: that.width,
+			opacity		: that.opacity,
+			originX		: that.originX,
+			originY		: that.originY,
+			fontSize	: 36,
+			fontWeight	: 'bold',
+			fontFamily	: 'Lucida Sans Unicode',
+			reference	: that,
+		});
+		that.originalObject = text;
+		this.canvas.add(text).setActiveObject(text).renderAll();
+	}
+	createTitle(){
+		this.canvas.deactivateAll().renderAll();
+		var that = this;
+		var text = new fabric.Textbox(that.text, {
+			id 			: that.id,
+			top 		: 30, // coord x
+			left 		: 20, // coord y
+			fill 		: '#BDBDBD',
+			index		: that.index,
+			class		: that.class,
+			width		: that.width,
+			opacity		: that.opacity,
+			originX		: that.originX,
+			originY		: that.originY,
+			fontSize	: 22,
+			fontWeight	: 'bold',
+			fontFamily	: 'Arial Black',
+			reference	: that,
+		});
+		that.originalObject = text;
+		this.canvas.add(text).setActiveObject(text).renderAll();
+	}
+	createMobile(){
+		this.canvas.deactivateAll().renderAll();
+		var that = this;
+		var text = new fabric.Textbox(that.text, {
+			id 			: that.id,
+			top 		: 30, // coord x
+			left 		: 20, // coord y
+			fill 		: '#BDBDBD',
+			index		: that.index,
+			class		: that.class,
+			width		: that.width,
+			opacity		: that.opacity,
+			originX		: that.originX,
+			originY		: that.originY,
+			fontSize	: 20,
+			fontWeight	: that.fontWeight,
+			fontFamily	: 'Arial Black',
+			reference	: that,
+		});
+		that.originalObject = text;
+		this.canvas.add(text).setActiveObject(text).renderAll();
+	}
+	createEmail(){
+		this.canvas.deactivateAll().renderAll();
+		var that = this;
+		var text = new fabric.Textbox(that.text, {
+			id 			: that.id,
+			top 		: 80, // coord x
+			left 		: 20, // coord y
+			fill 		: '#BDBDBD',
+			index		: that.index,
+			class		: that.class,
+			width		: that.width,
+			opacity		: that.opacity,
+			originX		: that.originX,
+			originY		: that.originY,
+			fontSize	: 20,
+			fontWeight	: that.fontWeight,
+			fontFamily	: 'Comic Sans MS',
+			reference	: that,
+		});
+		that.originalObject = text;
+		this.canvas.add(text).setActiveObject(text).renderAll();
+	}
+	createAddress1(){
+		this.canvas.deactivateAll().renderAll();
+		var that = this;
+		var text = new fabric.Textbox(that.text, {
+			id 			: that.id,
+			top 		: 30, // coord x
+			left 		: 20, // coord y
+			fill 		: '#3F51B5',
+			index		: that.index,
+			class		: that.class,
+			width		: that.width,
+			opacity		: that.opacity,
+			originX		: that.originX,
+			originY		: that.originY,
+			fontSize	: 18,
+			fontWeight	: that.fontWeight,
+			fontFamily	: 'Roboto Condensed',
+			reference	: that,
+		});
+		that.originalObject = text;
+		this.canvas.add(text).setActiveObject(text).renderAll();
+	}
+	createAddress2(){
+		this.canvas.deactivateAll().renderAll();
+		var that = this;
+		var text = new fabric.Textbox(that.text, {
+			id 			: that.id,
+			top 		: 30, // coord x
+			left 		: 20, // coord y
+			fill 		: '#3F51B5',
+			index		: that.index,
+			class		: that.class,
+			width		: that.width,
+			opacity		: that.opacity,
+			originX		: that.originX,
+			originY		: that.originY,
+			fontSize	: 18,
+			fontWeight	: that.fontWeight,
+			fontFamily	: 'Roboto Condensed',
+			reference	: that,
+		});
+		that.originalObject = text;
+		this.canvas.add(text).setActiveObject(text).renderAll();
+	}
+	createCompany(){
+		this.canvas.deactivateAll().renderAll();
+		var that = this;
+		var text = new fabric.Textbox(that.text, {
+			id 			: that.id,
+			top 		: 330, // coord x
+			left 		: 20, // coord y
+			fill 		: '#673AB7',
+			index		: that.index,
+			class		: that.class,
+			width		: that.width,
+			opacity		: that.opacity,
+			originX		: that.originX,
+			originY		: that.originY,
+			fontSize	: 42,
+			fontWeight	: that.fontWeight,
+			fontFamily	: 'Roboto Condensed',
+			reference	: that,
+		});
+		that.originalObject = text;
+		this.canvas.add(text).setActiveObject(text).renderAll();
+	}
+	createCompanyWeb(){
+		this.canvas.deactivateAll().renderAll();
+		var that = this;
+		var text = new fabric.Textbox(that.text, {
+			id 			: that.id,
+			top 		: 330, // coord x
+			left 		: 50, // coord y
+			fill 		: '#039BE5',
+			index		: that.index,
+			class		: that.class,
+			width		: that.width,
+			opacity		: that.opacity,
+			originX		: that.originX,
+			originY		: that.originY,
+			fontSize	: 28,
+			fontWeight	: that.fontWeight,
+			fontFamily	: 'Roboto Condensed',
+			reference	: that,
+		});
+		that.originalObject = text;
+		this.canvas.add(text).setActiveObject(text).renderAll();
+	}
+	delete(){
+		this.canvas.remove(this.originalObject).renderAll();
+	}
+	getWidth(object){
+		var text = new fabric.IText(object.text, {
+            fontSize: object.fontSize,
+            textAlign: object.textAlign,
+            fontWeight:object.fontWeight,
+            fontFamily:object.fontFamily
+        });
+        return (text.width+5);
+	}
+}
+module.exports = Fabric_Text;

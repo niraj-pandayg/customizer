@@ -1,0 +1,10 @@
+.canvas-box {
+  width: calc(100% - 380px);
+  min-height: 100vh;
+  max-height: 100%;
+  float: center;
+  background: #e1e1e1;
+  display: -webkit-inline-flex;
+}
+
+/*# sourceMappingURL=CanvasBox.css.map */

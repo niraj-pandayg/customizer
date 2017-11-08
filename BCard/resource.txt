@@ -1,0 +1,28 @@
+---------------------------- BENDING IMAGE -------------------------
+https://stackoverflow.com/questions/26403646/fabric-js-html-5-image-curving-options
+
+https://stackoverflow.com/questions/31757501/pixel-by-pixel-b%C3%A9zier-curve/31757637#31757637
+---------------------------- Random -------------------------
+https://facebook.github.io/react-native/docs/text.html
+https://stackoverflow.com/questions/39819290/remove-dom-in-react-js
+https://codepen.io/peterbe/pen/pjpBoj onBlur example
+---------------------------- ADDING SHAPES -------------------------
+https://github.com/kangax/fabric.js/wiki/Adding-additional-object-properties-to-serialized-JSON
+https://github.com/kangax/fabric.js/blob/master/src/shapes/object.class.js#L803
+
+                                LINE
+http://jsfiddle.net/Kienz/6vY5S/
+ 
+----------------------------Manipulate Activeobject-------------------------
+https://stackoverflow.com/questions/32395416/fabric-canvas-font-style-change-after-added
+https://jsfiddle.net/9mxgfvkt/
+http://jsfiddle.net/yong/ZJQX5/
+---------------------------- ACTIVE OBJECTS -------------------------
+https://codepen.io/janih/pen/zGxoZv
+http://jsfiddle.net/softvar/jX7T8/
+
+---------------------------- Manipulate Selection -------------------------
+https://stackoverflow.com/questions/45099442/fabricjs-manipulate-selected-objects
+
+---------------------------- KEYBOARD ACTIONS -------------------------
+http://jsfiddle.net/av01d/FT7a9/

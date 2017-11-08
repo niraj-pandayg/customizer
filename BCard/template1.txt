@@ -1,0 +1,189 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+import TemplateCSS from "./Template.css";
+import Fabric_Text from "../../../CanvasBox/fabric-components/Template1.js";
+
+var that;
+export default class Template extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      textChangeName:[],
+      textChangeTitle:[],
+      textChangeMobile:[],
+      textChangeEmail:[],
+      textChangeAddress1:[],
+      textChangeAddress2:[],
+      textChangeCompany:[],
+      textChangeCompanyWeb:[],
+        TemplateJSON:[{ text:'A' } ]
+    };
+    that = this;
+  }
+   textChangeName(e){
+    that.setState({textChangeName: e.target.value});
+    var name = new Fabric_Text({
+      text:that.state.textChangeName,    
+    });
+    name.createName();
+  }  
+  textChangeTitle(e){
+    that.setState({textChangeTitle: e.target.value});
+    var name = new Fabric_Text({
+      text:that.state.textChangeTitle,    
+    });
+    name.createTitle();
+  }
+  textChangeMobile(e){
+    that.setState({textChangeMobile: e.target.value});
+    var name = new Fabric_Text({
+      text:that.state.textChangeMobile,    
+    });
+    name.createMobile();
+  }  
+  textChangeEmail(e){
+    that.setState({textChangeEmail: e.target.value});
+    var name = new Fabric_Text({
+      text:that.state.textChangeEmail,    
+    });
+    name.createEmail();
+  }  
+  textChangeAddress1(e){
+    that.setState({textChangeAddress1: e.target.value});
+    var name = new Fabric_Text({
+      text:that.state.textChangeAddress1,    
+    });
+    name.createAddress1();
+  }
+  textChangeAddress2(e){
+    that.setState({textChangeAddress2: e.target.value});
+    var name = new Fabric_Text({
+      text:that.state.textChangeAddress2,    
+    });
+    name.createAddress2();
+  }  
+  textChangeCompany(e){
+    that.setState({textChangeCompany: e.target.value});
+    var name = new Fabric_Text({
+      text:that.state.textChangeCompany,    
+    });
+    name.createCompany();
+  }
+  textChangeCompanyWeb(e){
+    that.setState({textChangeCompanyWeb: e.target.value});
+    var name = new Fabric_Text({
+      text:that.state.textChangeCompanyWeb,    
+    });
+    name.createCompanyWeb();
+  }
+  render() {
+    var currentClass = "col-md-12 template-container "+this.props.visibility;
+    return (
+      <div class={currentClass}>
+      <div class="col-md-12 col-sm-12 col-xs-12 mt-10 text-center">
+              <input type="text" class="form-control" placeholder="Enter Name.." onChange={that.textChangeName}/>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12 mt-10 text-center">
+              <input type="text" class="form-control" placeholder="Enter Designation.." onChange={that.textChangeTitle}/>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12 mt-10 text-center">
+              <input type="text" class="form-control" placeholder="Enter Mobile.." onChange={that.textChangeMobile}/>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12 mt-10 text-center">
+              <input type="text" class="form-control" placeholder="Enter Email.." onChange={that.textChangeEmail}/>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12 mt-10 text-center">
+              <input type="text" class="form-control" placeholder="Enter Address Line 1.." onChange={that.textChangeAddress1}/>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12 mt-10 text-center">
+              <input type="text" class="form-control" placeholder="Enter Address Line 2.." onChange={that.textChangeAddress2}/>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12 mt-10 text-center">
+              <input type="text" class="form-control" placeholder="Enter Company Name.." onChange={that.textChangeCompany}/>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12 mt-10 text-center">
+              <input type="text" class="form-control" placeholder="Enter Company Website.." onChange={that.textChangeCompanyWeb}/>
+      </div>
+      {/* <div class="mt-10 col-md-12 text-center">
+          <button class="btn btn-primary" onClick={that.addTemplate.bind(this)}>Add Text</button>
+      </div> */}
+        {/* {
+          this.state.TemplateJSON.map(function (backgroundImage,index) {
+            var imageStyle = {
+              backgroundImage:'url('+backgroundImage+')'
+            }
+
+              ); */}
+          {/* })
+        } */}
+      </div>
+    );
+  }
+<<<<<<< HEAD
+}
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+import TemplateCSS from "./Template.css";
+// import Fabric_Text from "../../../CanvasBox/fabric-components/Template1.js";
+import Canvas from "../../../CanvasBox/fabric-components/Canvas.js";
+
+var c = new Canvas({
+  width:600,
+  height:400,
+  id:'canvas',
+});
+
+var that;
+export default class Template extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      value:'media/card_design1.png',  
+      TemplateJSON:[
+        'media/image.png',
+        'media/Placeholder.jpg',
+        'https://moonly-test.s3.amazonaws.com/mockups/nQsRw3PNs4HF4gRyAart.png'
+      ]    
+  } 
+}
+  addTemplate(){
+    // var el = ReactDOM.findDOMNode(that);
+    // // ReactDOM.unmountComponentAtNode(el);
+    //  
+    // c.init();
+    // c.addTshirtOverlay(that.state.value);
+    // c.centerCanvas();
+  }
+  // componentWillUpdate(){
+  //  this.addTemplate()
+  //   }
+  render() {
+    var currentClass = "col-md-12 template-container "+this.props.visibility;
+    return (
+      <div class={currentClass}>
+        {
+          this.state.TemplateJSON.map(function (backgroundImage,index) {
+            var imageStyle = {
+              backgroundImage:'url('+backgroundImage+')'
+            }
+            return(
+              <div key={index} data-src={backgroundImage} class="template-container-content col-md-12" style={imageStyle}>
+                    
+                <div class="canvas-box">
+                  <div class="section no-pad-bot no-pad-top">
+                    <canvas id = "canvas" ></canvas>
+                  </div>
+                </div>  
+              </div>  
+            );
+          })
+        }
+      </div>
+    );
+  }
+=======
+>>>>>>> f690b146cb2368c16db7069b22342cf1cffbece0
+}

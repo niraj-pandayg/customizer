@@ -1,0 +1,12 @@
+.template-container .template-container-content {
+  height: 170px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 5px; 
+}
+  .inputfile{
+    display: none !important;
+  }
+
+/*# sourceMappingURL=Template.css.map */

@@ -1,0 +1,7 @@
+.canvas-box {
+  width: calc(100% - 380px);
+  height: 100vh;
+  display: -webkit-flex;
+  float: left;
+  background: #e1e1e1;
+  overflow: -webkit-flex; }

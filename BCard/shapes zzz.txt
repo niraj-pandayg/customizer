@@ -1,0 +1,91 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import { CirclePicker  } from "react-color";
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
+
+import Fabric_Text from "../../../CanvasBox/fabric-components/shapes.js";
+
+var that;
+export default class Text extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      type	    : 'Rect',
+      backgroundColor: '#212121',
+			stroke  	: 1,
+			strokeWidth	: 2,
+      textJSON:[
+        {
+          id:1,
+          type	    : 'Rect',
+          stroke  	: 1,
+          strokeWidth	: 2,
+        }
+      ]
+    };
+    that = this;
+  }
+  colorChange(color){
+    var temp = that.state.textJSON[0];
+    var tempArray = [];
+    temp.fill = color.hex;
+    tempArray.push(temp);
+    that.setState({textJSON: tempArray, backgroundcolor: color.hex});
+  }
+  addImage(event){
+    var object = event.target.dataset.src;
+    var image = new Fabric_shape({
+      src:event.target.dataset.src,
+    });
+    image.create();
+  }
+  render() {
+    var currentClass = "col-md-12 addText "+this.props.visibility;
+    var optionsFont = [
+      { value: 'Rect', label: 'Rect' },
+      { value: 'Circle', label: 'Circle' },
+      { value: 'Polygon', label: 'Polygon' },
+      { value: 'Ellipse', label: 'Ellipse' },
+      { value: 'Triangle', label: 'Triangle' }
+    ];
+    return (
+      <div class={currentClass}>
+      <div style={{fontSize: '12px',color: "#999"}} class="mt-10">
+        Step 1 : Select Color
+      </div>
+        <div class="col-md-12">
+          <CirclePicker onChange={that.colorChange.bind(this)} color={this.state.backgroundColor}/>
+        </div>
+        <div style={{fontSize: '12px',color: "#999"}} class="mt-10">
+        Step 2 : Select Font Family
+        </div>
+          <Select
+            name="form-field-name"
+            placeholder="Select Font.."
+            value={that.state.value}
+            options={optionsFont}
+            onChange={that.fontChange.bind(this)}
+            class="col-md-12 mt-10"
+          />
+         
+        {
+          this.state.textJSON.map(function (object,index) {
+            var textStyle = {
+              type:object.type,
+              backgroundcolor:object.backgroundcolor,
+              float: 'none !important'
+            }
+            return(
+              <div key={index}>
+              <div class="col-md-12 col-sm-12 col-xs-12 mt-10">
+              <input type="text" class="form-control" placeholder="Enter text.." onChange={that.textChange}/>
+              </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    );
+  }
+}

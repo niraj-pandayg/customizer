@@ -1,0 +1,91 @@
+import React from "react";
+import {Container} from 'flux/utils';
+var ReactDOM = require('react-dom');
+
+import CanvasBoxCSS from "./CanvasBox.css";
+
+import ZoomToolbox from "./ZoomToolbox/ZoomToolbox.js";
+import Toolbar from "./Toolbar/Toolbar.js";
+
+import Canvas from "./fabric-components/Canvas.js";
+import Image from "./fabric-components/Image.js";
+import Text from "./fabric-components/Text.js";
+
+import FabricStore from "../../stores/FabricStore.js";
+
+var c = new Canvas({
+  width:600,
+  height:400,
+  id:'canvas',
+});
+
+export default class CanvasBox extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      activeObject:null,
+      value:'media/front.png'
+    };
+  }
+  setGender(event) {
+    this.setState({value: event.target.value});
+    console.log(this.state.value);
+  }
+  componentDidMount () {
+    this._tfront()
+  }
+  _tfront (){
+     
+    var c = new Canvas({
+      width:600,
+      height:400,
+      id:'canvas',
+    });
+    c.init();
+    c.addTshirtOverlay(this.state.value);
+    c.centerCanvas();
+
+  }
+  _tfront (){
+     
+    var el = ReactDOM.findDOMNode(this);
+
+    c.init();
+    c.addTshirtOverlay(this.state.value);
+    c.centerCanvas();
+  }
+  _tback (){
+     
+    var oldcanv = ReactDOM.findDOMNode(this);
+    c.addTshirtOverlay(this.state.value);
+    c.centerCanvas();
+  }
+
+  componentDidUpdate () {
+this._tback ()  
+  }
+
+  componentWillMount(){
+    FabricStore.on("change",() => {
+      this.setState({
+        activeObject:FabricStore.getActiveObject()
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div class="canvas-box">
+        <Toolbar activeObject={this.state.activeObject}/>
+        <div class="section no-pad-bot no-pad-top">
+          <div onChange={this.setGender.bind(this)}>
+            <input type="radio" value="media/front.png" name="gender"/> Front
+            <input type="radio" value="media/back.png" name="gender"/> Back
+          </div>
+          <canvas id = "canvas" ref="canvas"></canvas>
+        </div>
+        <ZoomToolbox />
+      </div>
+    );
+  }
+}
